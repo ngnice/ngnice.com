@@ -901,13 +901,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@docgeni/cli@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@docgeni/cli/-/cli-0.4.0.tgz#3ee817205c48eedf7233e81a5a3ae669b2a9ff70"
-  integrity sha512-MkuEY5p0lAL0pGHBk3FYhMDzNIXtNYRGfEjoCa3sXpmGPA7QAC58yok5dxY1aSqLxL42FSE5Qlv1TdJQe+JKTA==
+"@docgeni/cli@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/cli/-/cli-0.5.0.tgz#943964c9b7e9c131f91679e8a8770809b3efff82"
+  integrity sha512-gzmeANyu8XpZMW07DAw0XdiECMIXxrWpUC3KDswov2nWGI9yXVW5s7XGrFVIpcNncdP6zuaxA2V1q/9QZf1vPA==
   dependencies:
-    "@docgeni/core" "^0.4.0"
-    "@docgeni/toolkit" "^0.4.0"
+    "@docgeni/core" "^0.5.0"
+    "@docgeni/toolkit" "^0.5.0"
     chokidar "^3.3.1"
     cosmiconfig "^6.0.0"
     fancy-log "^1.3.3"
@@ -919,13 +919,13 @@
     tapable "^1.1.3"
     yargs "15.3.1"
 
-"@docgeni/core@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@docgeni/core/-/core-0.4.0.tgz#e324669ab250f90b0aad04b85e3a1f3025c56132"
-  integrity sha512-BndOWipb27IXI6P3eEx7B1U8rTsHDbeH6Xku6O4Z+U88WbB4ava+6KsKHO3UioZ4qggITmnKp1jNTzhb8VKDog==
+"@docgeni/core@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/core/-/core-0.5.0.tgz#811e7c70012ba88f1ff5a2c916848a9aab7784a4"
+  integrity sha512-PiJ/N3Kqrh4vWP1Vk3xZbEEHFt6TG+i4KbHoLeA/fzfjul/Hc4XAtqeGXRGw9ZlusdDwOnpabsqB9QQMiXBF8w==
   dependencies:
-    "@docgeni/template" "^0.4.0"
-    "@docgeni/toolkit" "^0.4.0"
+    "@docgeni/template" "^0.5.0"
+    "@docgeni/toolkit" "^0.5.0"
     chokidar "^3.3.1"
     cosmiconfig "^6.0.0"
     fancy-log "^1.3.3"
@@ -943,15 +943,15 @@
     vinyl "^2.2.0"
     vinyl-fs "^3.0.3"
 
-"@docgeni/template@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@docgeni/template/-/template-0.4.0.tgz#833ea0bb60f69447764ed846ca692f6635190ec6"
-  integrity sha512-2uiMpugIrJ9z0AAtKpljBo9ciFW/8XuMEOI63tVOSd2et2NxbvuKFTdxSRtoq4qwjs8mRQ/CvGlUVYqL+mHYEg==
+"@docgeni/template@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/template/-/template-0.5.0.tgz#25d71e8c7958ee24a33f7726bbf2eadf15ea0830"
+  integrity sha512-UHUHxt8KlrG1p4t6fLqHXLxEXFiYgV/8ELwZ42RAZOC6ZzFs2yOyjIS+ZrYxquALpYi6yak/Af3Gv0HBGfF6+w==
 
-"@docgeni/toolkit@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@docgeni/toolkit/-/toolkit-0.4.0.tgz#444e67b2c840643571243315b354e872fa743ba0"
-  integrity sha512-g1bo2W9eDHu4EJjJ5d8g2TF1+adubpVbJqJLzTeM3q/HNfelLGAAtQXlpOuYH70Ky2Hi+CrjdeJmYb0Hno9JNQ==
+"@docgeni/toolkit@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/toolkit/-/toolkit-0.5.0.tgz#449d01d84c37af34eef08d9bdb772571ee30734c"
+  integrity sha512-fOCnUsctHB2T4tDPs/ZVzamIzYQHm0pR9cmf7JLfHf2skHiduWpl/4DcxVi0QoNIzknuc4k3H5fiSPHPgANOZw==
   dependencies:
     camelcase "^6.0.0"
     chalk "^3.0.0"

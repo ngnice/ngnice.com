@@ -19,8 +19,12 @@ order: 20
 [Clarity](https://clarity.design)| [![](https://img.shields.io/github/stars/vmware/clarity?style=social)](https://github.com/vmware/clarity) | Vmware Angular 组件库
 [Nebular](https://akveo.github.io/nebular)| [![](https://img.shields.io/github/stars/akveo/nebular?style=social)](https://github.com/akveo/nebular) | Nebular Angular 组件库
 [DevUI](https://devui.design/)| [![](https://img.shields.io/github/stars/DevCloudFE/ng-devui?style=social)](https://github.com/DevCloudFE/ng-devui) | 华为 DevUI Angular 组件库
-
-
+[Prime NG](https://www.primefaces.org/primeng/)| [![](https://img.shields.io/github/stars/primefaces/primeng?style=social)](https://github.com/primefaces/primeng) | Prime NG
+[NG-LIGHTNING](https://ng-lightning.github.io/ng-lightning)| [![](https://img.shields.io/github/stars/ng-lightning/ng-lightning?style=social)](https://github.com/ng-lightning/ng-lightning) | NG-LIGHTNING
+[Ignite UI](https://www.infragistics.com/products/ignite-ui-angular/angular/)| [![](https://img.shields.io/github/stars/IgniteUI/igniteui-angular?style=social)](https://github.com/IgniteUI/igniteui-angular) | Ignite UI for Angular
+[Semantic UI](https://ng-semantic.herokuapp.com/#/)| [![](https://img.shields.io/github/stars/vladotesanovic/ngSemantic?style=social)](https://github.com/vladotesanovic/ngSemantic) | Semantic UI for Angular
+[Covalent](https://teradata.github.io/covalent)| [![](https://img.shields.io/github/stars/teradata/covalent?style=social)](https://github.com/teradata/covalent) | Teradata UI Platform built on Angular Material
+[Onsen UI](https://onsen.io/v2/api/angular2/)| [![](https://img.shields.io/github/stars/OnsenUI/OnsenUI?style=social)](https://github.com/OnsenUI/OnsenUI) | Onsen UI Mobile
 
 ## 类库
 
