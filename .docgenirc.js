@@ -10,7 +10,7 @@ module.exports = {
         null,
         {
             title: '微前端',
-            path: 'http://planet.ngnice.com',
+            path: 'https://github.com/worktile/ngx-planet',
             isExternal: true
         },
         {
