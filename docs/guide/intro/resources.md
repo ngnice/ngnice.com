@@ -1,6 +1,6 @@
 ---
 title: 资源推荐
-order: 20
+order: 100
 ---
 
 我们根据自己的开发和使用经验总结了一些可能对开发者有用的资源。
@@ -70,5 +70,6 @@ order: 20
 - [Angular性能优化指南](https://web.dev/angular/#fast)
 - [Mgechev 博客](https://blog.mgechev.com/)
 - [ThoughtRam 博客](https://blog.thoughtram.io/)
+- [汪志成 - 雪狼 博客](https://blog.wangke.io)
 - [知乎Angular主题](https://www.zhihu.com/topic/20015467/hot)
 - [ng-nice知乎专栏](https://zhuanlan.zhihu.com/ng-nice)
