@@ -1,7 +1,7 @@
 module.exports = {
     baseHref: '/',
     heads: [],
-    mode: 'site',
+    mode: 'full',
     title: 'ngnice',
     logoUrl: 'assets/images/logo.png',
     siteProjectName: 'site',
