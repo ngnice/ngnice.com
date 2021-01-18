@@ -5,6 +5,7 @@ module.exports = {
     title: 'ngnice',
     logoUrl: 'assets/images/logo.png',
     siteProjectName: 'site',
+    theme: 'angular',
     repoUrl: 'https://github.com/ngnice/ngnice.com',
     navs: [
         null,
