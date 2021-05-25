@@ -1160,10 +1160,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@docgeni/cli@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@docgeni/cli/-/cli-1.0.0-beta.1.tgz#cb7ce0ff8e94c055081b7db782734669a3f05fb0"
-  integrity sha512-mHRkYlN/cE3YqriZEg+NLhDVW6g+rBkJ2Cwr17YXID3DCZBLSbmQx+yEbtE6dcT0ClxIOmfxG6tqm3zfbIc0Bg==
+"@docgeni/cli@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/cli/-/cli-1.0.0.tgz#ff5690d468b7d4f485c6f5c1ef31e7500b4268e7"
+  integrity sha512-CLtQtV8ZFMYTrVHAAfXMEWIi+Ofom55VO5XbTgl28/ZBfKIF7qPUIUkL67VKk6x8pUQAKZK+iJ8udNFoBoWpUQ==
   dependencies:
     "@angular-devkit/build-angular" "~0.1002.1"
     "@angular-devkit/schematics" "~10.2.1"
@@ -1179,9 +1179,9 @@
     "@angular/platform-browser" "~10.2.4"
     "@angular/platform-browser-dynamic" "~10.2.4"
     "@angular/router" "~10.2.4"
-    "@docgeni/core" "^1.0.0-beta.1"
-    "@docgeni/template" "^1.0.0-beta.1"
-    "@docgeni/toolkit" "^1.0.0-beta.1"
+    "@docgeni/core" "^1.0.0"
+    "@docgeni/template" "^1.0.0"
+    "@docgeni/toolkit" "^1.0.0"
     "@schematics/angular" "^10.0.0"
     chokidar "^3.3.1"
     cosmiconfig "^6.0.0"
@@ -1190,21 +1190,19 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
     marked "^0.8.1"
-    rxjs "^6.5.4"
     stringify-object "^3.3.0"
     tapable "^1.1.3"
-    tslib "^2.0.0"
     yargs "15.3.1"
     zone.js "^0.10.2"
 
-"@docgeni/core@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@docgeni/core/-/core-1.0.0-beta.1.tgz#e1d585306160a129aa7c63b140dd71edb41bf447"
-  integrity sha512-jLz3yXdS0GmjrB/FMDrFy5XQ8S6SO3xLj+7XyPgmyI6e4eluCRilC8FJWe6N9xF+p0S+90uX79U6QXfJOruomA==
+"@docgeni/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/core/-/core-1.0.0.tgz#66cdd45363768edc53767082ef9df6f628f69834"
+  integrity sha512-fF7D8aDo6NGGr5jpycgODmxuH07y4Degl9sP60b71LJfqLjC67KE1fN4uxYpfdYYxQjnwZV8xkqshOdFXTYGXw==
   dependencies:
     "@angular-devkit/core" "~11.2.6"
     "@angular-devkit/schematics" "~11.2.6"
-    "@docgeni/toolkit" "^1.0.0-beta.1"
+    "@docgeni/toolkit" "^1.0.0"
     chokidar "^3.3.1"
     cosmiconfig "^6.0.0"
     fancy-log "^1.3.3"
@@ -1221,17 +1219,17 @@
     vinyl "^2.2.0"
     vinyl-fs "^3.0.3"
 
-"@docgeni/template@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@docgeni/template/-/template-1.0.0-beta.1.tgz#e37488f62f763080bb46bc13ed0531385713d80f"
-  integrity sha512-Syf2qEmycGApatKO04G4EN++Qsyc25pCpIGF2Y1WLFDz3os4V6CTOdBznmA3WbGR4XVgjcEor162/ABub6fvoA==
+"@docgeni/template@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/template/-/template-1.0.0.tgz#c24f3ba9152ac4d2032710660c8b30a37429da4f"
+  integrity sha512-yUlEuupshAycX9zAMT3AUahH0jMaIbflwXWVVeO/VvGdsNsg0CWQCEDTRoUnCQlKUi4TJsNZV+jPJy95sVhy0A==
   dependencies:
     tslib "*"
 
-"@docgeni/toolkit@^1.0.0-beta.1":
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@docgeni/toolkit/-/toolkit-1.0.0-beta.1.tgz#dc235f487cb6142869d2e74be9d3b6d9fafae6b4"
-  integrity sha512-zAgJ/YTJw4Jza7JZxIBirQGBnmA39p8kc8aXgS+JVxVu2f7Kp8BIRd+VwIj+B4p4m626mXoAR/SR1uYyzBJYSQ==
+"@docgeni/toolkit@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@docgeni/toolkit/-/toolkit-1.0.0.tgz#c095f291a76bdb9202c5f92ca73627068cc577cf"
+  integrity sha512-r1g1WNs1I+sBQgqn1qnGbQsYtuzUlMnZzti3XM7ExIjgSY1NTh1Lmu7VCNETsD3uW/Qmunhe7J36r5pR2nJ+uw==
   dependencies:
     camelcase "^6.0.0"
     chalk "^3.0.0"
@@ -1242,6 +1240,7 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
     handlebars "^4.7.3"
+    lodash "^4.17.21"
     minimatch "3.0.4"
     param-case "^3.0.2"
     pluralize "^8.0.0"
@@ -6847,6 +6846,11 @@ lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+
 log-ok@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/log-ok/-/log-ok-0.1.1.tgz#bea3dd36acd0b8a7240d78736b5b97c65444a334"
@@ -9506,13 +9510,6 @@ rxjs@6.6.3, rxjs@^6.4.0, rxjs@^6.6.0:
   version "6.6.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.3.tgz#8ca84635c4daa900c0d3967a6ee7ac60271ee552"
   integrity sha512-trsQc+xYYXZ3urjOiJOuCOa5N3jAZ3eiSpQB5hIT8zGlL2QfnHLJ2r7GMkBGuIausdJN1OneaI6gQlsqNHHmZQ==
-  dependencies:
-    tslib "^1.9.0"
-
-rxjs@^6.5.4:
-  version "6.6.6"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.6.tgz#14d8417aa5a07c5e633995b525e1e3c0dec03b70"
-  integrity sha512-/oTwee4N4iWzAMAL9xdGKjkEHmIwupR3oXbQjCKywF1BeFohswF3vZdogbmEF6pZkOsXTzWkrZszrWpQTByYVg==
   dependencies:
     tslib "^1.9.0"
 
