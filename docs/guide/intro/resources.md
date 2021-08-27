@@ -71,6 +71,6 @@ order: 100
 - [Angular 性能优化指南](https://web.dev/angular/#fast)
 - [Mgechev 博客](https://blog.mgechev.com/)
 - [ThoughtRam 博客](https://blog.thoughtram.io/)
-- [汪志成 - 雪狼 博客](https://blog.wangke.io)
+- [汪志成 - 雪狼 博客](https://blog.ralph.wang/)
 - [知乎 Angular 主题](https://www.zhihu.com/topic/20015467/hot)
 - [ng-nice 知乎专栏](https://zhuanlan.zhihu.com/ng-nice)
