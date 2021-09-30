@@ -7,6 +7,7 @@ module.exports = {
     siteProjectName: 'site',
     theme: 'angular',
     repoUrl: 'https://github.com/ngnice/ngnice.com',
+    footer: 'Open-source MIT Licensed | Copyright © 2020-present Powered by ngnice',
     navs: [
         null,
         {

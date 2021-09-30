@@ -4,8 +4,7 @@ order: 10
 ---
 
 `Angular`是一个应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用，同时是一款优秀的跨平台Web框架，那么`ngnice`是什么呢？
-> `ngnice`致力于给 Angular 开发者提供优质的内容，包括学习资源，类库推荐等等。
-
+<alert>`ngnice`致力于给 Angular 开发者提供优质的内容，包括学习资源，类库推荐等等。</alert>
 ## 入门教程
 如果你正打算了解和学习`Angular`，官方文档是最好的教程，[英文文档](https://angular.io)和[中文文档](https://angular.cn)任你选择。
 
