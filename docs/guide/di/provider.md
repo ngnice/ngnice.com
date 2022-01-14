@@ -5,7 +5,11 @@ order: 3
 
 Angular 官方文档对于依赖提供者，也就是`providers`的解释如下：
 
-![image.png](assets/images/di/provider-01.png)
+通过配置提供者，你可以把服务提供给那些需要它们的应用部件。
+<alert>By configuring providers, you can make services available to the parts of your application that need them.</alert>
+
+依赖提供者会使用 DI 令牌来配置注入器，注入器会用它来提供这个依赖值的具体的、运行时版本
+<alert>A dependency provider configures an injector with a DI token, which that injector uses to provide the runtime version of a dependency value.</alert>
 
 简单总结`依赖提供者`做了两件事：
 

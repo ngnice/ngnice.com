@@ -12,7 +12,7 @@ order: 5
 在我们开发类库的时候，支持摇树优化是一个重要的特性，要减少体积，那么在 Angular 类库中需要做以下几点：
 
 - 分模块打包和导入，按钮模块和模态框模块分别打包
-- 服务尽量使用`@Injectable({ provideIn: "root" | "any" | })`优先
+- 服务尽量使用`@Injectable({ provideIn: "root" | "any"})`优先
 - 使用轻量级注入 Token
 
 
