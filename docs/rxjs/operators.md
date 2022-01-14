@@ -9,7 +9,7 @@ order: 40
 
 操作符是**函数**，有两种操作符：
 
-**管道操作符**是一种能用语句 `ObservableInstance.pipe(operator())` 把 Observables 管道化的操作符。管道操作符包括 [filter(...)](https://rxjs-dev.firebaseapp.com/api/operators/filter)， 和 [mergeMap(...)](https://rxjs-dev.firebaseapp.com/api/operators/mergeMap) 等。当我们调用时，操作符不会改变已经存在的 Observable 实例。相反，它们会返回一个新的 Observable，其订阅逻辑是基于第一个 Observable。
+**管道操作符**是一种能用语句 `ObservableInstance.pipe(operator())` 把 Observables 管道化的操作符。管道操作符包括 [filter(...)](https://rxjs.dev/api/operators/filter)， 和 [mergeMap(...)](https://rxjs.dev/api/operators/mergeMap) 等。当我们调用时，操作符不会改变已经存在的 Observable 实例。相反，它们会返回一个新的 Observable，其订阅逻辑是基于第一个 Observable。
 
 > 管道操作符是一种将某个 Observable 作为输入，并返回另一个 Observable 的函数。这是一个纯操作：作为输入的 Observable 保持不变。
 
@@ -17,7 +17,7 @@ order: 40
 
 **创建操作符**是一种被作为独立函数调用的操作符，用来创建一个新的 Observable。例如： `of(1, 2, 3)` 创建了一个将会依次发出 1，2，3 的 Observable。创建操作符在稍后的部分会做更详细地讨论。
 
-例如，被调用的操作符 [map](https://rxjs-dev.firebaseapp.com/api/operators/map) 类似于同名的数组方法。就像`[1, 2, 3].map(x => x * x)` 将会生成`[1, 4, 9]` ，Observable 将会被创建如下：
+例如，被调用的操作符 [map](https://rxjs.dev/api/operators/map) 类似于同名的数组方法。就像`[1, 2, 3].map(x => x * x)` 将会生成`[1, 4, 9]` ，Observable 将会被创建如下：
 
 ```
 import { of } from 'rxjs';
@@ -31,7 +31,7 @@ map(x => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
 // value: 9
 ```
 
-将会发出 `1`, `4`, `9`。另一个有用的操作符是 [first](https://rxjs-dev.firebaseapp.com/api/operators/first):
+将会发出 `1`, `4`, `9`。另一个有用的操作符是 [first](https://rxjs.dev/api/operators/first):
 
 ```
 import { of } from 'rxjs';
@@ -72,7 +72,7 @@ import { interval } from 'rxjs';
 const observable = interval(1000 /* number of milliseconds */);
 ```
 
-查看[所有的静态创建操作符列表](https://rxjs-dev.firebaseapp.com/guide/operators#creation-operators)
+查看[所有的静态创建操作符列表](https://rxjs.dev/guide/operators#creation-operators)
 
 ## 高阶 Observables
 
@@ -95,13 +95,13 @@ const fileObservable = urlObservable.pipe(
 );
 ```
 
-[concatAll()](https://rxjs-dev.firebaseapp.com/api/operators/concatAll) 操作符订阅从“外部”Observable （上例中 urlObservable）发出的每一个“内部” Observable（上例中 http.get() 返回的 Observable） ，并复制这个“内部”Observable 发出的所有值 ，直到这个“内部”Observable 完成，再复制下一个“内部”Observable。所有“内部”Observable 的值都以这种方式被串联，并返回到输出 Observable 中。其它有用的扁平化操作符（称为组合操作符）有：
+[concatAll()](https://rxjs.dev/api/operators/concatAll) 操作符订阅从“外部”Observable （上例中 urlObservable）发出的每一个“内部” Observable（上例中 http.get() 返回的 Observable） ，并复制这个“内部”Observable 发出的所有值 ，直到这个“内部”Observable 完成，再复制下一个“内部”Observable。所有“内部”Observable 的值都以这种方式被串联，并返回到输出 Observable 中。其它有用的扁平化操作符（称为组合操作符）有：
 
-- [mergeAll()](https://rxjs-dev.firebaseapp.com/api/operators/mergeAll) 订阅每个发出的内部 Observable，并在 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使这个值被发出。
-- [switchAll()](https://rxjs-dev.firebaseapp.com/api/operators/switchAll) 订阅第一个发出的内部 Observable，并在这个 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使值被发出，但当下一个内部 Observable 发出时，取消订阅前一个，转而订阅新的内部 Observable。
-- [exhaust()](https://rxjs-dev.firebaseapp.com/api/operators/exhaust) 订阅第一个发出的内部 Observable，并在这个 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使值被发出。同时会丢弃所有新到的内部 Observable，直到第一个内部 Observable 完成后，再等待下一个内部 Observable 发出。
+- [mergeAll()](https://rxjs.dev/api/operators/mergeAll) 订阅每个发出的内部 Observable，并在 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使这个值被发出。
+- [switchAll()](https://rxjs.dev/api/operators/switchAll) 订阅第一个发出的内部 Observable，并在这个 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使值被发出，但当下一个内部 Observable 发出时，取消订阅前一个，转而订阅新的内部 Observable。
+- [exhaust()](https://rxjs.dev/api/operators/exhaust) 订阅第一个发出的内部 Observable，并在这个 Observable 上值到达时（复制这个值，返回到输出 Observable 中），使值被发出。同时会丢弃所有新到的内部 Observable，直到第一个内部 Observable 完成后，再等待下一个内部 Observable 发出。
 
-就像很多数组库结合 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 和 [flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (或者 `flatten()`) 成单一的 [flatMap()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) ，所有 RxJS 的扁平操作符也都有等价的 map 方法 [concatMap()](https://rxjs-dev.firebaseapp.com/api/operators/concatMap)， [mergeMap()](https://rxjs-dev.firebaseapp.com/api/operators/mergeMap)， [switchMap()](https://rxjs-dev.firebaseapp.com/api/operators/switchMap)， 和 [exhaustMap()](https://rxjs-dev.firebaseapp.com/api/operators/exhaustMap)。
+就像很多数组库结合 [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 和 [flat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat) (或者 `flatten()`) 成单一的 [flatMap()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap) ，所有 RxJS 的扁平操作符也都有等价的 map 方法 [concatMap()](https://rxjs.dev/api/operators/concatMap)， [mergeMap()](https://rxjs.dev/api/operators/mergeMap)， [switchMap()](https://rxjs.dev/api/operators/switchMap)， 和 [exhaustMap()](https://rxjs.dev/api/operators/exhaustMap)。
 
 ## 弹珠图
 
@@ -119,151 +119,151 @@ RxJS 官方文档网站中，大量使用了弹珠图来说明操作符怎样工
 
 由于不同的用途，操作符可以被分类为：创建，转换，过滤，组合，多播，错误处理，工具等。在下面的列表中，你将找到按类别组织好的所有操作符。
 
-完整的概述，见[参考页](https://rxjs-dev.firebaseapp.com/api)。
+完整的概述，见[参考页](https://rxjs.dev/api)。
 
 ### 创建操作符
 
-- [ajax](https://rxjs-dev.firebaseapp.com/api/ajax/ajax)
-- [bindCallback](https://rxjs-dev.firebaseapp.com/api/index/function/bindCallback)
-- [bindNodeCallback](https://rxjs-dev.firebaseapp.com/api/index/function/bindNodeCallback)
-- [defer](https://rxjs-dev.firebaseapp.com/api/index/function/defer)
-- [empty](https://rxjs-dev.firebaseapp.com/api/index/function/empty)
-- [from](https://rxjs-dev.firebaseapp.com/api/index/function/from)
-- [fromEvent](https://rxjs-dev.firebaseapp.com/api/index/function/fromEvent)
-- [fromEventPattern](https://rxjs-dev.firebaseapp.com/api/index/function/fromEventPattern)
-- [generate](https://rxjs-dev.firebaseapp.com/api/index/function/generate)
-- [interval](https://rxjs-dev.firebaseapp.com/api/index/function/interval)
-- [of](https://rxjs-dev.firebaseapp.com/api/index/function/of)
-- [range](https://rxjs-dev.firebaseapp.com/api/index/function/range)
-- [throwError](https://rxjs-dev.firebaseapp.com/api/index/function/throwError)
-- [timer](https://rxjs-dev.firebaseapp.com/api/index/function/timer)
-- [iif](https://rxjs-dev.firebaseapp.com/api/index/function/iif)
+- [ajax](https://rxjs.dev/api/ajax/ajax)
+- [bindCallback](https://rxjs.dev/api/index/function/bindCallback)
+- [bindNodeCallback](https://rxjs.dev/api/index/function/bindNodeCallback)
+- [defer](https://rxjs.dev/api/index/function/defer)
+- [empty](https://rxjs.dev/api/index/function/empty)
+- [from](https://rxjs.dev/api/index/function/from)
+- [fromEvent](https://rxjs.dev/api/index/function/fromEvent)
+- [fromEventPattern](https://rxjs.dev/api/index/function/fromEventPattern)
+- [generate](https://rxjs.dev/api/index/function/generate)
+- [interval](https://rxjs.dev/api/index/function/interval)
+- [of](https://rxjs.dev/api/index/function/of)
+- [range](https://rxjs.dev/api/index/function/range)
+- [throwError](https://rxjs.dev/api/index/function/throwError)
+- [timer](https://rxjs.dev/api/index/function/timer)
+- [iif](https://rxjs.dev/api/index/function/iif)
 
 ### 组合创建操作符
 
 这些是 Observable 创建操作符，它们也具有组合功能 -- 发出多个源 Observable 的值。
 
-- [combineLatest](https://rxjs-dev.firebaseapp.com/api/index/function/combineLatest)
-- [concat](https://rxjs-dev.firebaseapp.com/api/index/function/concat)
-- [forkJoin](https://rxjs-dev.firebaseapp.com/api/index/function/forkJoin)
-- [merge](https://rxjs-dev.firebaseapp.com/api/index/function/merge)
-- [partition](https://rxjs-dev.firebaseapp.com/api/index/function/partition)
-- [race](https://rxjs-dev.firebaseapp.com/api/index/function/race)
-- [zip](https://rxjs-dev.firebaseapp.com/api/index/function/zip)
+- [combineLatest](https://rxjs.dev/api/index/function/combineLatest)
+- [concat](https://rxjs.dev/api/index/function/concat)
+- [forkJoin](https://rxjs.dev/api/index/function/forkJoin)
+- [merge](https://rxjs.dev/api/index/function/merge)
+- [partition](https://rxjs.dev/api/index/function/partition)
+- [race](https://rxjs.dev/api/index/function/race)
+- [zip](https://rxjs.dev/api/index/function/zip)
 
 ### 转换操作符
 
-- [buffer](https://rxjs-dev.firebaseapp.com/api/operators/buffer)
-- [bufferCount](https://rxjs-dev.firebaseapp.com/api/operators/bufferCount)
-- [bufferTime](https://rxjs-dev.firebaseapp.com/api/operators/bufferTime)
-- [bufferToggle](https://rxjs-dev.firebaseapp.com/api/operators/bufferToggle)
-- [bufferWhen](https://rxjs-dev.firebaseapp.com/api/operators/bufferWhen)
-- [concatMap](https://rxjs-dev.firebaseapp.com/api/operators/concatMap)
-- [concatMapTo](https://rxjs-dev.firebaseapp.com/api/operators/concatMapTo)
-- [exhaust](https://rxjs-dev.firebaseapp.com/api/operators/exhaust)
-- [exhaustMap](https://rxjs-dev.firebaseapp.com/api/operators/exhaustMap)
-- [expand](https://rxjs-dev.firebaseapp.com/api/operators/expand)
-- [groupBy](https://rxjs-dev.firebaseapp.com/api/operators/groupBy)
-- [map](https://rxjs-dev.firebaseapp.com/api/operators/map)
-- [mapTo](https://rxjs-dev.firebaseapp.com/api/operators/mapTo)
-- [mergeMap](https://rxjs-dev.firebaseapp.com/api/operators/mergeMap)
-- [mergeMapTo](https://rxjs-dev.firebaseapp.com/api/operators/mergeMapTo)
-- [mergeScan](https://rxjs-dev.firebaseapp.com/api/operators/mergeScan)
-- [pairwise](https://rxjs-dev.firebaseapp.com/api/operators/pairwise)
-- [partition](https://rxjs-dev.firebaseapp.com/api/operators/partition)
-- [pluck](https://rxjs-dev.firebaseapp.com/api/operators/pluck)
-- [scan](https://rxjs-dev.firebaseapp.com/api/operators/scan)
-- [switchMap](https://rxjs-dev.firebaseapp.com/api/operators/switchMap)
-- [switchMapTo](https://rxjs-dev.firebaseapp.com/api/operators/switchMapTo)
-- [window](https://rxjs-dev.firebaseapp.com/api/operators/window)
-- [windowCount](https://rxjs-dev.firebaseapp.com/api/operators/windowCount)
-- [windowTime](https://rxjs-dev.firebaseapp.com/api/operators/windowTime)
-- [windowToggle](https://rxjs-dev.firebaseapp.com/api/operators/windowToggle)
-- [windowWhen](https://rxjs-dev.firebaseapp.com/api/operators/windowWhen)
+- [buffer](https://rxjs.dev/api/operators/buffer)
+- [bufferCount](https://rxjs.dev/api/operators/bufferCount)
+- [bufferTime](https://rxjs.dev/api/operators/bufferTime)
+- [bufferToggle](https://rxjs.dev/api/operators/bufferToggle)
+- [bufferWhen](https://rxjs.dev/api/operators/bufferWhen)
+- [concatMap](https://rxjs.dev/api/operators/concatMap)
+- [concatMapTo](https://rxjs.dev/api/operators/concatMapTo)
+- [exhaust](https://rxjs.dev/api/operators/exhaust)
+- [exhaustMap](https://rxjs.dev/api/operators/exhaustMap)
+- [expand](https://rxjs.dev/api/operators/expand)
+- [groupBy](https://rxjs.dev/api/operators/groupBy)
+- [map](https://rxjs.dev/api/operators/map)
+- [mapTo](https://rxjs.dev/api/operators/mapTo)
+- [mergeMap](https://rxjs.dev/api/operators/mergeMap)
+- [mergeMapTo](https://rxjs.dev/api/operators/mergeMapTo)
+- [mergeScan](https://rxjs.dev/api/operators/mergeScan)
+- [pairwise](https://rxjs.dev/api/operators/pairwise)
+- [partition](https://rxjs.dev/api/operators/partition)
+- [pluck](https://rxjs.dev/api/operators/pluck)
+- [scan](https://rxjs.dev/api/operators/scan)
+- [switchMap](https://rxjs.dev/api/operators/switchMap)
+- [switchMapTo](https://rxjs.dev/api/operators/switchMapTo)
+- [window](https://rxjs.dev/api/operators/window)
+- [windowCount](https://rxjs.dev/api/operators/windowCount)
+- [windowTime](https://rxjs.dev/api/operators/windowTime)
+- [windowToggle](https://rxjs.dev/api/operators/windowToggle)
+- [windowWhen](https://rxjs.dev/api/operators/windowWhen)
 
 ### 过滤操作符
 
-- [audit](https://rxjs-dev.firebaseapp.com/api/operators/audit)
-- [auditTime](https://rxjs-dev.firebaseapp.com/api/operators/auditTime)
-- [debounce](https://rxjs-dev.firebaseapp.com/api/operators/debounce)
-- [debounceTime](https://rxjs-dev.firebaseapp.com/api/operators/debounceTime)
-- [distinct](https://rxjs-dev.firebaseapp.com/api/operators/distinct)
-- [distinctUntilChanged](https://rxjs-dev.firebaseapp.com/api/operators/distinctUntilChanged)
-- [distinctUntilKeyChanged](https://rxjs-dev.firebaseapp.com/api/operators/distinctUntilKeyChanged)
-- [elementAt](https://rxjs-dev.firebaseapp.com/api/operators/elementAt)
-- [filter](https://rxjs-dev.firebaseapp.com/api/operators/filter)
-- [first](https://rxjs-dev.firebaseapp.com/api/operators/first)
-- [ignoreElements](https://rxjs-dev.firebaseapp.com/api/operators/ignoreElements)
-- [last](https://rxjs-dev.firebaseapp.com/api/operators/last)
-- [sample](https://rxjs-dev.firebaseapp.com/api/operators/sample)
-- [sampleTime](https://rxjs-dev.firebaseapp.com/api/operators/sampleTime)
-- [single](https://rxjs-dev.firebaseapp.com/api/operators/single)
-- [skip](https://rxjs-dev.firebaseapp.com/api/operators/skip)
-- [skipLast](https://rxjs-dev.firebaseapp.com/api/operators/skipLast)
-- [skipUntil](https://rxjs-dev.firebaseapp.com/api/operators/skipUntil)
-- [skipWhile](https://rxjs-dev.firebaseapp.com/api/operators/skipWhile)
-- [take](https://rxjs-dev.firebaseapp.com/api/operators/take)
-- [takeLast](https://rxjs-dev.firebaseapp.com/api/operators/takeLast)
-- [takeUntil](https://rxjs-dev.firebaseapp.com/api/operators/takeUntil)
-- [takeWhile](https://rxjs-dev.firebaseapp.com/api/operators/takeWhile)
-- [throttle](https://rxjs-dev.firebaseapp.com/api/operators/throttle)
-- [throttleTime](https://rxjs-dev.firebaseapp.com/api/operators/throttleTime)
+- [audit](https://rxjs.dev/api/operators/audit)
+- [auditTime](https://rxjs.dev/api/operators/auditTime)
+- [debounce](https://rxjs.dev/api/operators/debounce)
+- [debounceTime](https://rxjs.dev/api/operators/debounceTime)
+- [distinct](https://rxjs.dev/api/operators/distinct)
+- [distinctUntilChanged](https://rxjs.dev/api/operators/distinctUntilChanged)
+- [distinctUntilKeyChanged](https://rxjs.dev/api/operators/distinctUntilKeyChanged)
+- [elementAt](https://rxjs.dev/api/operators/elementAt)
+- [filter](https://rxjs.dev/api/operators/filter)
+- [first](https://rxjs.dev/api/operators/first)
+- [ignoreElements](https://rxjs.dev/api/operators/ignoreElements)
+- [last](https://rxjs.dev/api/operators/last)
+- [sample](https://rxjs.dev/api/operators/sample)
+- [sampleTime](https://rxjs.dev/api/operators/sampleTime)
+- [single](https://rxjs.dev/api/operators/single)
+- [skip](https://rxjs.dev/api/operators/skip)
+- [skipLast](https://rxjs.dev/api/operators/skipLast)
+- [skipUntil](https://rxjs.dev/api/operators/skipUntil)
+- [skipWhile](https://rxjs.dev/api/operators/skipWhile)
+- [take](https://rxjs.dev/api/operators/take)
+- [takeLast](https://rxjs.dev/api/operators/takeLast)
+- [takeUntil](https://rxjs.dev/api/operators/takeUntil)
+- [takeWhile](https://rxjs.dev/api/operators/takeWhile)
+- [throttle](https://rxjs.dev/api/operators/throttle)
+- [throttleTime](https://rxjs.dev/api/operators/throttleTime)
 
 ### 组合操作符
 
 另见上面的组合创建操作符部分。
 
-- [combineAll](https://rxjs-dev.firebaseapp.com/api/operators/combineAll)
-- [concatAll](https://rxjs-dev.firebaseapp.com/api/operators/concatAll)
-- [exhaust](https://rxjs-dev.firebaseapp.com/api/operators/exhaust)
-- [mergeAll](https://rxjs-dev.firebaseapp.com/api/operators/mergeAll)
-- [startWith](https://rxjs-dev.firebaseapp.com/api/operators/startWith)
-- [withLatestFrom](https://rxjs-dev.firebaseapp.com/api/operators/withLatestFrom)
+- [combineAll](https://rxjs.dev/api/operators/combineAll)
+- [concatAll](https://rxjs.dev/api/operators/concatAll)
+- [exhaust](https://rxjs.dev/api/operators/exhaust)
+- [mergeAll](https://rxjs.dev/api/operators/mergeAll)
+- [startWith](https://rxjs.dev/api/operators/startWith)
+- [withLatestFrom](https://rxjs.dev/api/operators/withLatestFrom)
 
 ### 多播操作符
 
-- [multicast](https://rxjs-dev.firebaseapp.com/api/operators/multicast)
-- [publish](https://rxjs-dev.firebaseapp.com/api/operators/publish)
-- [publishBehavior](https://rxjs-dev.firebaseapp.com/api/operators/publishBehavior)
-- [publishLast](https://rxjs-dev.firebaseapp.com/api/operators/publishLast)
-- [publishReplay](https://rxjs-dev.firebaseapp.com/api/operators/publishReplay)
-- [share](https://rxjs-dev.firebaseapp.com/api/operators/share)
+- [multicast](https://rxjs.dev/api/operators/multicast)
+- [publish](https://rxjs.dev/api/operators/publish)
+- [publishBehavior](https://rxjs.dev/api/operators/publishBehavior)
+- [publishLast](https://rxjs.dev/api/operators/publishLast)
+- [publishReplay](https://rxjs.dev/api/operators/publishReplay)
+- [share](https://rxjs.dev/api/operators/share)
 
 ### 错误处理操作符
 
-- [catchError](https://rxjs-dev.firebaseapp.com/api/operators/catchError)
-- [retry](https://rxjs-dev.firebaseapp.com/api/operators/retry)
-- [retryWhen](https://rxjs-dev.firebaseapp.com/api/operators/retryWhen)
+- [catchError](https://rxjs.dev/api/operators/catchError)
+- [retry](https://rxjs.dev/api/operators/retry)
+- [retryWhen](https://rxjs.dev/api/operators/retryWhen)
 
 ### 工具操作符
 
-- [tap](https://rxjs-dev.firebaseapp.com/api/operators/tap)
-- [delay](https://rxjs-dev.firebaseapp.com/api/operators/delay)
-- [delayWhen](https://rxjs-dev.firebaseapp.com/api/operators/delayWhen)
-- [dematerialize](https://rxjs-dev.firebaseapp.com/api/operators/dematerialize)
-- [materialize](https://rxjs-dev.firebaseapp.com/api/operators/materialize)
-- [observeOn](https://rxjs-dev.firebaseapp.com/api/operators/observeOn)
-- [subscribeOn](https://rxjs-dev.firebaseapp.com/api/operators/subscribeOn)
-- [timeInterval](https://rxjs-dev.firebaseapp.com/api/operators/timeInterval)
-- [timestamp](https://rxjs-dev.firebaseapp.com/api/operators/timestamp)
-- [timeout](https://rxjs-dev.firebaseapp.com/api/operators/timeout)
-- [timeoutWith](https://rxjs-dev.firebaseapp.com/api/operators/timeoutWith)
-- [toArray](https://rxjs-dev.firebaseapp.com/api/operators/toArray)
+- [tap](https://rxjs.dev/api/operators/tap)
+- [delay](https://rxjs.dev/api/operators/delay)
+- [delayWhen](https://rxjs.dev/api/operators/delayWhen)
+- [dematerialize](https://rxjs.dev/api/operators/dematerialize)
+- [materialize](https://rxjs.dev/api/operators/materialize)
+- [observeOn](https://rxjs.dev/api/operators/observeOn)
+- [subscribeOn](https://rxjs.dev/api/operators/subscribeOn)
+- [timeInterval](https://rxjs.dev/api/operators/timeInterval)
+- [timestamp](https://rxjs.dev/api/operators/timestamp)
+- [timeout](https://rxjs.dev/api/operators/timeout)
+- [timeoutWith](https://rxjs.dev/api/operators/timeoutWith)
+- [toArray](https://rxjs.dev/api/operators/toArray)
 
 ### 条件和布尔操作符
 
-- [defaultIfEmpty](https://rxjs-dev.firebaseapp.com/api/operators/defaultIfEmpty)
-- [every](https://rxjs-dev.firebaseapp.com/api/operators/every)
-- [find](https://rxjs-dev.firebaseapp.com/api/operators/find)
-- [findIndex](https://rxjs-dev.firebaseapp.com/api/operators/findIndex)
-- [isEmpty](https://rxjs-dev.firebaseapp.com/api/operators/isEmpty)
+- [defaultIfEmpty](https://rxjs.dev/api/operators/defaultIfEmpty)
+- [every](https://rxjs.dev/api/operators/every)
+- [find](https://rxjs.dev/api/operators/find)
+- [findIndex](https://rxjs.dev/api/operators/findIndex)
+- [isEmpty](https://rxjs.dev/api/operators/isEmpty)
 
 ### 数学和聚合操作符
 
-- [count](https://rxjs-dev.firebaseapp.com/api/operators/count)
-- [max](https://rxjs-dev.firebaseapp.com/api/operators/max)
-- [min](https://rxjs-dev.firebaseapp.com/api/operators/min)
-- [reduce](https://rxjs-dev.firebaseapp.com/api/operators/reduce)
+- [count](https://rxjs.dev/api/operators/count)
+- [max](https://rxjs.dev/api/operators/max)
+- [min](https://rxjs.dev/api/operators/min)
+- [reduce](https://rxjs.dev/api/operators/reduce)
 
 ## 创建自定义操作符
 
@@ -335,4 +335,4 @@ function delay(delayInMillis) {
 
 3.从接收 Observable 构造函数的函数中返回该清场函数。
 
-当然，这仅是示例；`delay()` 操作符[已经存在了](https://rxjs-dev.firebaseapp.com/api/operators/delay)。
+当然，这仅是示例；`delay()` 操作符[已经存在了](https://rxjs.dev/api/operators/delay)。

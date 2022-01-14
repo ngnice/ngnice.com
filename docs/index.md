@@ -2,7 +2,7 @@
 title: 首页
 hero:
   title: NG-NICE
-  description: 努力打造成 Angular 开发者提供优质的内容的平台
+  description: 努力打造成为 Angular 开发者提供优质内容的平台
   backgroundColor: "#f5f6f8"
   actions:
     - text: 认识 Angular
@@ -21,8 +21,8 @@ features:
     description: 提供 Angular 的最佳实践教程
 ---
 
-<alert type="info">努力打造成 Angular 开发者提供优质的内容的平台。</alert>
+<alert type="info">努力打造成为 Angular 开发者提供优质内容的平台。</alert>
 
 ## 一起加入
 
-如果你有好的想法和建议同时也想为 Angular 社区贡献力量的可以加入我们（加微信`why520crazy`后拉你进群），让我们一起为 Angular 社区做点贡献吧。
+如果你有好的想法和建议同时也想为 Angular 社区贡献力量的可以加入我们（加微信`why520crazy`后拉你进群），让我们一起为 Angular 社区做点贡献吧！

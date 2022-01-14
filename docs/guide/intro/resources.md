@@ -26,6 +26,7 @@ order: 100
 [Covalent](https://teradata.github.io/covalent)| [![](https://img.shields.io/github/stars/teradata/covalent?style=social)](https://github.com/teradata/covalent) | Teradata UI Platform built on Angular Material
 [Onsen UI](https://onsen.io/v2/api/angular2/)| [![](https://img.shields.io/github/stars/OnsenUI/OnsenUI?style=social)](https://github.com/OnsenUI/OnsenUI) | Onsen UI Mobile
 [NG-NEST](https://ngnest.com/index/docs/ng-nest)| [![](https://img.shields.io/github/stars/NG-NEST/ng-nest?style=social)](https://github.com/NG-NEST/ng-nest) | NG-NEST，用于研发企业级中后台产品
+[taiga-ui](https://github.com/tinkoff/taiga-ui)| [![](https://img.shields.io/github/stars/tinkoff/taiga-ui?style=social)](https://github.com/NG-NEST/ng-nest) | Angular UI Kit and components library for awesome people
 
 ## 类库
 
@@ -40,6 +41,10 @@ order: 100
 [ngx-formly](https://formly.dev/)| [![](https://img.shields.io/github/stars/ngx-formly/ngx-formly?style=social)](https://github.com/ngx-formly/ngx-formly) | JSON 驱动的动态表单方案
 [ngx-charts](https://swimlane.github.io/ngx-charts)| [![](https://img.shields.io/github/stars/swimlane/ngx-charts?style=social)](https://github.com/swimlane/ngx-charts) | Angular 声明式的图表框架
 [ngx-graph](https://swimlane.github.io/ngx-graph/)| [![](https://img.shields.io/github/stars/swimlane/ngx-graph?style=social)](https://github.com/swimlane/ngx-graph) | 是一个 Angular 图形可视化库
+[ngx-gantt](https://github.com/worktile/ngx-gantt)| [![](https://img.shields.io/github/stars/worktile/ngx-gantt?style=social)](https://github.com/worktile/ngx-gantt) | A modern and powerful gantt chart component for Angular
+[slate-angular](https://github.com/worktile/slate-angular)| [![](https://img.shields.io/github/stars/worktile/slate-angular?style=social)](https://github.com/worktile/ngx-gantt) | Angular view layer for Slate
+
+
 
 
 ## 开发工具
@@ -56,10 +61,12 @@ order: 100
 
 名称| GitHub|描述 
 ---| --- | --- 
+[@tethys/store](https://github.com/tethys-org/store)| [![](https://img.shields.io/github/stars/tethys-org/store?style=social)](https://github.com/tethys-org/store) | 🚀 A mini, yet powerful state management library for Angular. from Worktile & PingCode.
 [ngrx](https://ngrx.io/)| [![](https://img.shields.io/github/stars/ngrx/platform?style=social)](https://github.com/ngrx/platform) | Reactive libraries for Angular
 [ngxs](https://www.ngxs.io/)| [![](https://img.shields.io/github/stars/ngxs/store?style=social)](https://github.com/ngxs/store) | 🚀 NGXS - State Management for Angular
 [akita](https://netbasal.gitbook.io/akita/)| [![](https://img.shields.io/github/stars/datorama/akita?style=social)](https://github.com/datorama/akita) | 🚀 State Management Tailored-Made for JS Applications
-[ngx-mini-store](https://github.com/why520crazy/ngx-mini-store)| [![](https://img.shields.io/github/stars/why520crazy/ngx-mini-store?style=social)](https://github.com/why520crazy/ngx-mini-store) | A mini, yet powerful state management library for Angular
+[elf](https://github.com/ngneat/elf)| [![](https://img.shields.io/github/stars/ngneat/elf?style=social)](https://github.com/datorama/akita) | 🧙‍♀️ A Reactive Store with Magical Powers
+
 
 
 ## 博客及网站
@@ -74,3 +81,4 @@ order: 100
 - [汪志成 - 雪狼 博客](https://blog.ralph.wang/)
 - [知乎 Angular 主题](https://www.zhihu.com/topic/20015467/hot)
 - [ng-nice 知乎专栏](https://zhuanlan.zhihu.com/ng-nice)
+- [RxJS 中文翻译 - 雪狼翻译](https://v7.rxjs.tech/)
