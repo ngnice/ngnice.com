@@ -2,3 +2,9 @@
 $dg-primary: #3f51b5; // #1976d2;
 // $dg-navbar-background-angular: #3f51b5;
 @import '~@docgeni/template/styles/index.scss';
+
+.live-example {
+    display: block;
+    padding: 10px 20px;
+    border: 1px solid #eee;
+}
