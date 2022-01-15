@@ -11,16 +11,15 @@ order: 5
 
 在我们开发类库的时候，支持摇树优化是一个重要的特性，要减少体积，那么在 Angular 类库中需要做以下几点：
 
-- 分模块打包和导入，按钮模块和模态框模块分别打包
-- 服务尽量使用`@Injectable({ provideIn: "root" | "any"})`优先
-- 使用轻量级注入 Token
-
+- 分模块打包和导入，按钮模块和模态框模块分别打包。
+- 服务尽量使用`@Injectable({ provideIn: "root" | "any"})`优先。
+- 使用轻量级注入 Token。
 
 ### 令牌什么时候会被保留
 
 那么在同一个组件模块中，提供了很多个组件，如果只想打包被使用的组件如何做呢？
 
-比如我们定义如下的一个 card 组件，包含了 header，同时 card 组件中需要获取 header 组件示例。
+比如我们定义如下的一个 card 组件，包含了 header，同时 card 组件中需要获取 header 组件实例引用。
 
 ```html
 <lib-card>
@@ -41,7 +40,7 @@ class LibHeaderComponent {}
 })
 class LibCardComponent {
   @ContentChild(LibHeaderComponent)
-  header: LibHeaderComponent|null = null;
+  header: LibHeaderComponent | null = null;
 }
 ```
 
@@ -51,24 +50,21 @@ class LibCardComponent {
 
 `@ContentChild(LibHeaderComponent) header: LibHeaderComponent;`
 
-- 其中一个引用位于 **类型位置** 上 - 即，它把`LibHeaderComponent`用作了类型：`header: LibHeaderComponent; `。
+- 其中一个引用位于 **类型位置** 上 - 它把`LibHeaderComponent`用作了类型：`header: LibHeaderComponent; `。
 - 另一个引用位于 **值的位置** - 即，`LibHeaderComponent`是`@ContentChild()`参数装饰器的值：   `@ContentChild(LibHeaderComponent)`。
 
 
 编译器对这些位置的令牌引用的处理方式时不同的。
 
-- 编译器在从 TypeScript 转换完后会删除这些  **类型位置**  上的引用，所以它们对于摇树优化没什么影响
-- 编译器必须在运行时保留  **值位置**  上的引用，这就会阻止该组件被摇树优化掉。
-
-
+- 编译器在从 TypeScript 转换完后会删除这些 **类型位置** 上的引用，所以它们对于摇树优化没什么影响。
+- 编译器必须在运行时保留 **值位置** 上的引用，这就会阻止该组件被摇树优化掉。
 
 ### 什么时候使用轻量级注入令牌模式
 
 当一个组件被用作注入令牌时，就会出现摇树优化的问题，有两种情况:
 
-- 令牌用在内容查询中值的位置上， 也就是`@ContentChild`或者`@ViewChild`等查询装饰器
-- 该令牌用作构造函数注入的类型说明符，`@Inject(OtherComponent)`, 下面的代码虽然没有出现 @Inject()，通过前面的章节可以知道这只是简写而已。
-
+- 令牌用在内容查询中值的位置上， 也就是`@ContentChild`或者`@ViewChild`等查询装饰器。
+- 该令牌用作构造函数注入的类型说明符，`@Inject(OtherComponent)`, 下面的代码虽然没有出现`@Inject()`，通过前面的章节可以知道这只是简写而已。
 
 ```ts
 class MyComponent {
@@ -81,7 +77,7 @@ class MyComponent {
 
 ### 使用轻量级注入令牌
 
-轻量级注入令牌设计模式简单理解就是：**使用一个小的抽象类作为注入令牌，并在稍后为它提供实际实现，该抽象类固然会被留下（不会被摇树优化掉），但它很小，对应用程序的大小没有任何重大影响。**
+解决上述的问题最好就是引入轻量级注入令牌设计模式: **使用一个小的抽象类作为注入令牌，并在稍后为它提供实际实现，该抽象类固然会被留下（不会被摇树优化掉），但它很小，对应用程序的大小没有任何重大影响。**
 
 ```ts
 abstract class LibHeaderToken {}
@@ -116,7 +112,7 @@ class LibCardComponent {
 
 ### 使用轻量级注入令牌进行 API 定义
 
-为了有类型提示，我们可以为这个轻量级令牌定义函数和属性，不是这个抽象类加多少个 API 定义都不会影响体积，因为 TS 编译后类型都会丢失，加类型只是为了在开发模式下类型更加安全。
+为了有类型提示，我们可以为这个轻量级令牌定义函数和属性，不管这个抽象类加多少个 API 定义都不会影响体积，因为 TS 编译后类型都会丢失，加类型只是为了在开发模式下类型更加安全而已。
 
 ```ts
 abstract class LibHeaderToken {
@@ -151,13 +147,12 @@ class LibCardComponent implement AfterContentInit {
 
 ```
 
-### 为你的轻量级注入令牌命名
+### 轻量级注入令牌命名
 
 轻量级注入令牌只对组件有用。
 
-- **LibHeaderComponent** 遵循 **Component** 后缀命名约定
-- **LibHeaderToken** 遵循轻量级注入令牌命名约定。推荐的写法是使用组件基本名加上后缀 **Token**
-
+- **LibHeaderComponent** 遵循 **Component** 后缀命名约定。
+- **LibHeaderToken** 遵循轻量级注入令牌命名约定。推荐的写法是使用组件基本名加上后缀 **Token**。
 
 ### 解决组件循环引用
 
@@ -172,7 +167,7 @@ class LibCardComponent implement AfterContentInit {
 对于带有很多路由的大型应用，肯定会使用惰性加载(一种按需加载 NgModule 的模式)。
 
 ### 惰性加载入门
-路由定义时使用`loadChildren`并动态 import 并返回模块:
+路由定义时使用`loadChildren`，动态 import 并返回模块:
 ```ts
 const routes: Routes = [
   {
@@ -198,15 +193,15 @@ RouterModule.forChild([
 
 建立惰性加载的特性模块有两个主要步骤：
 
-- 使用`--route`标志，用 CLI 创建特性模块。`ng generate module customers --route customers --module app.module`
-- 配置相关路由
+- 使用`--route`标志，用 CLI 创建特性模块。`ng generate module customers --route customers --module app.module`。
+- 配置相关路由。
 
 
 ### 懒加载和急性加载的区别？
 
 唯一区别就是会：**创建子`ModuleInjector`**
 
-<alert>意味着所有的 providers 和 imports 模块的 providers 都是独立的，急性模块并不是知道懒加载模块的 providers。</alert>
+<alert>意味着所有的 providers 和 imports 模块的 providers 都是独立的，急性模块并不知道懒加载模块的 providers。</alert>
 
 
 
@@ -214,14 +209,14 @@ RouterModule.forChild([
 
 `forRoot()`与`forChild()`的区别？
 
-如果模块同时定义了`providers`（服务）和`declarations`（组件、指令、管道），那么，当你同时在多个特性模块中加载此模块时，这些服务就会被注册在多个地方。这会导致出现多个服务实例，并且该服务的行为不再像单例一样。
+如果模块同时定义了`providers`（服务）和`declarations`（组件、指令、管道），那么，当你同时在多个懒加载的特性模块中引入此模块时，这些服务就会被注册在多个地方。这会导致出现多个服务实例，并且该服务的行为不再像单例一样。
 
 
 防止这种现象：
 
-- 用`providedIn: "root"`语法代替在模块中注册服务的方式
-- 把你的服务分离到它们自己的模块中
-- 在模块中分别定义`forRoot()`和`forChild()`方法
+- 用`providedIn: "root"`语法代替在模块中注册服务的方式。
+- 把你的服务分离到它们自己的模块中。
+- 在模块中分别定义`forRoot()`和`forChild()`方法。
 
 
 ```ts
@@ -240,7 +235,7 @@ static forRoot(config: UserServiceConfig): ModuleWithProviders<GreetingModule> {
 
 ## `providedIn: 'any'`
 
-通过使用`providedIn: 'any'`，所有急性加载的模块都会共享同一个服务单例，但是惰性加载模块各自有它们自己独有的单例。
+通过使用`providedIn: 'any'`，所有急性加载的模块都会共享同一个服务单例，但是惰性加载模块各自有它们自己独有的单例。和在模块中使用`providers`提供依赖的效果是类似的，区别就是会摇树优化。
 
 ![image.png](assets/images/di/advanced-02.png)
 
@@ -272,9 +267,9 @@ function ParamDecorator(cls: any, unusedKey: any, index: number) {
 
 `ReflectiveInjector`依赖于`Reflect`对象提供的反射能力，来搜集隐式依赖，并通过 reflect-metadata 增强包实现相关功能，但是这种处理方式有一些问题：
 
-- `ReflectiveInjector`依赖`Reflect`和 reflect-metadata 增强包，兼容性差
-- 包体积变大
-- 性能问题，使用反射需要维护一个大的 Map
+- `ReflectiveInjector`依赖`Reflect`和 reflect-metadata 增强包，兼容性差。
+- 包体积变大。
+- 性能问题，使用反射需要维护一个大的 Map。
 
 
 使用`StaticInjector`的代码如下：
@@ -313,9 +308,9 @@ constructor(@Optional() @SkipSelf() parentModule?: CoreModule) {
 
 原则：
 
-- 让构造函数保持简单 - 构造函数应该只用来初始化变量，获取数据在`ngOnInit`中进行
-- 通过覆写排序函数达到自定义行为的目的
-- 尽量避免使用组件基类，如果需要特别注意生命周期函数
+- 让构造函数保持简单 - 构造函数应该只用来初始化变量，获取数据在`ngOnInit`中进行。
+- 通过覆写排序函数达到自定义行为的目的。
+- 尽量避免使用组件基类，如果需要特别注意生命周期函数。
 
 ![image.png](assets/images/di/advanced-03.png)
 ![image.png](assets/images/di/advanced-04.png)
@@ -350,9 +345,9 @@ const square = function (n) {
 
 通过上述的示例可以得出一下结论：
 
-- 变量只有声明被提升，不提升初始化
-- 函数可以在声明之前调用，函数的声明被提升
-- 函数和变量相比，会被优先提升
+- 变量只有声明被提升，不提升初始化。
+- 函数可以在声明之前调用，函数的声明被提升。
+- 函数和变量相比，会被优先提升。
 
 
 那么 class 是 ES 2015 的新特性，它的行为和函数不一样，**class 不会被提升**。
@@ -391,8 +386,8 @@ class NameService {
 
 解决这个问题有2个办法：
 
-- 第一就是把`NameService`移动到`ForwardRefComponent`组件前
-- 第二就是使用`provide: forwardRef(() => NameService)`
+- 第一就是把`NameService`移动到`ForwardRefComponent`组件前。
+- 第二就是使用`provide: forwardRef(() => NameService)`。
 
 `forwardRef`实现原理很简单，就是让`provide`存储一个闭包的函数，在定义式不调用，在注入的时候获取 Token 再调用闭包函数返回`NameService`的类型，此时 JS 已经完整执行过，`NameService`已经定义。
 

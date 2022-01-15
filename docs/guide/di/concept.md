@@ -29,7 +29,7 @@ const logger = new Logger();
 const heroesService = new HeroesService(logger);
 ```
 
-通过上述示例发现，`HeroesService`不直接创建`Logger`类的实例，统一在外层创建后通过构造函数参数传递给   `HeroesService`，如果应用的类成千上万，那么实例化类的工作就会变得相当繁琐，会有一大推样板代码，为了管理创建依赖工作，一般会使用 **控制反转容器(IoC Container) ** 进行管理。只需要通过如下一行代码即可实现`HeroesService`的创建， `IocContainer`会通过`HeroesService`的构造函数寻找依赖，找到`Logger`并实例化。
+通过上述示例发现，`HeroesService`不直接创建`Logger`类的实例，统一在外层创建后通过构造函数参数传递给   `HeroesService`，如果应用的类成千上万，那么实例化类的工作就会变得相当繁琐，会有一大推样板代码，为了管理创建依赖工作，一般会使用 **控制反转容器(IoC Container)** 进行管理。只需要通过如下一行代码即可实现`HeroesService`的创建， `IocContainer`会通过`HeroesService`的构造函数寻找依赖，找到`Logger`并实例化。
 
 ```ts
 const heroesService = IocContainer.get(HeroesService);
@@ -60,8 +60,8 @@ const heroesService = IocContainer.get(HeroesService);
 
 - 学习起来有点复杂
 - 阅读代码变得抽象
-- 依赖注入框架是通过反射或动态编程实现，导致IDE对“查找引用”，“显示调用层次结构”和安全重构变得困难
-- 编译时错误被推送到运行时
+- 依赖注入框架是通过反射或动态编程实现，导致IDE对"查找引用"，"显示调用层次结构"和安全重构变得困难
+- 编译时错误被推送到运行时（不包含 Javascript）
 
 
 ## Angular 为什么会有依赖注入？
@@ -71,7 +71,7 @@ const heroesService = IocContainer.get(HeroesService);
 
 ## 服务和依赖注入的关系
 
-Angular 为了解决数据共享和逻辑复用问题，引入了服务的概念，服务简单理解就是一个带有特性功能的类，Angular 提倡把与视图无关的逻辑抽取到服务中，这样可以让组件类更加精简、高效，组件的工作只管用户体验，把业务逻辑相关功能（比如：从服务器获取数据，验证用户输入或直接往控制台中写日志等）委托给各种服务，最后通过 Angular 的依赖注入，这些带有特定功能的服务类可以被任何组件注入并使用。
+Angular 为了解决数据共享和逻辑复用问题，引入了服务的概念，服务简单理解就是一个带有特定功能的类，Angular 提倡把与视图无关的逻辑抽取到服务中，这样可以让组件类更加精简、高效，组件的工作只管用户体验，把业务逻辑相关功能（比如：从服务器获取数据，验证用户输入或直接往控制台中写日志等）委托给各种服务，最后通过 Angular 的依赖注入，这些带有特定功能的服务类可以被任何组件注入并使用。
 
 **Angular 依赖注入：**  连接服务的桥梁，在需要的地方（组件/指令/其他服务）通过构造函数注入依赖的服务，依赖注入 + 服务的组合造就了使用 Angular 可以轻松组织和管理复杂应用。
 
@@ -79,7 +79,7 @@ Angular 为了解决数据共享和逻辑复用问题，引入了服务的概念
 
 ## 其他框架 React 和 Vue 有依赖注入吗？
 
-可以说有，也可以说没有，React 为了解决全局数据的共享问题，提供了 Context，创建好 Context 后需要在上层组件通过   `<MyContext.Provider value={/* 某个值 */}>`提供依赖值（这个依赖值可以是纯数据对象，也可以带有逻辑），然后在任何的子组件中通过`<MyContext.Consumer>`进行消费（Vue 中也有类似的`provide`和`inject`），其实这些都可以狭隘的理解成最简单的依赖注入，只不过 Context 只解决了数据共享的问题，虽然也可以作为逻辑复用，但是官方不推荐，React 官方先后推出 Mixin、高阶组件、Render Props 以及最新的 Hooks 用来解决逻辑复用问题。
+可以说有，也可以说没有，React 为了解决全局数据的共享问题，提供了 Context，创建好 Context 后需要在上层组件通过   `<MyContext.Provider value={/* 某个值 */}>`提供依赖值（这个依赖值可以是纯数据对象，也可以是带有方法的对象），然后在任何的子组件中通过`<MyContext.Consumer>`进行消费（Vue 中也有类似的`provide`和`inject`），其实这些都可以狭隘的理解成最简单的依赖注入，只不过 Context 只解决了数据共享的问题，虽然也可以作为逻辑复用，但是官方不推荐，其次就是必须要结合 JSX 才可以使用，React 官方先后推出 Mixin、高阶组件、Render Props 以及最新的 Hooks 用来解决逻辑复用问题。
 
 ```ts
 <MyContext.Consumer>
@@ -87,5 +87,5 @@ Angular 为了解决数据共享和逻辑复用问题，引入了服务的概念
 </MyContext.Consumer>
 ```
 
-那么回到 Angular 框架来说，Angular 的服务 + 依赖注入完美解决了数据共享和逻辑复用问题，服务本质上和 React Hooks 没有太多的区别，只是 API 形态不一样，一个是通过函数形式一个是通过类+依赖注入，因为这两个框架的底层机制和思想不一样，导致了 API 表现形式的不同，但是最终都是在解决数据共享和逻辑复用的问题。
+那么回到 Angular 框架来说，Angular 的服务 + 依赖注入完美解决了数据共享和逻辑复用问题，本质上和 React Hooks 没有太多的区别，只是 API 形态不一样，一个是通过函数形式一个是通过类+依赖注入，因为这两个框架的底层机制和思想不一样，导致了 API 表现形式的不同，但是目的一致，最终都是在解决数据共享和逻辑复用的问题。
 

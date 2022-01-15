@@ -5,12 +5,14 @@ order: 4
 
 通过依赖注入的概念我们知道，创建实例的工作都交给`Ioc 容器`（也叫注入器）了，通过构造函数参数装饰器`@Inject(DIToken)`告诉注入器我们需要注入`DIToken`对应的依赖值，注入器就会帮我们查找依赖并返回值，Angular 应用启动会默认创建相关的注入器，而且 Angular 的注入器是有层级的，类似于一个 Dom 树。
 
+<alert>Angular 中依赖注入提供的依赖值都是单例的，为了让不同的模块或者组件可以注入不同的实例，只要让两个组件的有独立的注入器即可，每个注入器都提供同一个依赖，这样就可以实现非全局单例的效果，有了层级注入器后，可以通过层级一层一层往上 [解析](docs/di/hierarchical-di#解析规则) 的规则，可以实现更高级的功能。</alert>
+
 ## 两个注入器层级
 
 Angular 中有两个注入器层次结构：
 
 - `ModuleInjector` 层次结构 —— 使用`@NgModule()`或`@Injectable()`装饰器在此层次结构中配置   `ModuleInjector`。
-- `ElementInjector` 层次结构 —— 在每个 DOM 元素上隐式创建。除非你在`@Directive()`或`@Component()`   的   `providers`属性中进行配置，否则默认情况下，`ElementInjector`为空
+- `ElementInjector` 层次结构 —— 在每个 DOM 元素上隐式创建。除非你在`@Directive()`或`@Component()`   的   `providers`属性中进行配置，否则默认情况下，`ElementInjector`为空。
 
 
 ## ModuleInjector
@@ -31,15 +33,15 @@ Angular 中有两个注入器层次结构：
 
 第一点的意思就是`AppModule`导入了`FeatureAModule`和`FeatureBModule`，那么 Angular 会根据模块树找到所有模块配置的`providers`并打平存放到一起，这就意味着整个应用程序所有地方都可以注入这些打平的`providers`，这就是 Angular 模块下的服务与组件/指令/管道所不同的地方，组件/指令/管道在某个模块定义，只要没有导出，其他模块都无法使用，必须导出才可以被导入该模块的组件使用，其次就是当有重复 DI Token 提供的依赖时，后提供的会覆盖之前提供的。
 
-第二点可以不严谨的认为整个应用程序只有一个根模块注入器，只有通过路由的懒加载才会创建子模块注入器，当懒加载模块  `FeatureCModule`还没有被加载时，`AppModule`并不能通过模块树找到`FeatureCModule`，那么处理这种问题有两种做法:
-- 第一种就是现在的行为，创建一个子模块注入器
-- 第二种就是把`FeatureCModule`中的所有`providers`动态追加到根模块注入器中
+第二点可以不严谨的认为整个应用程序只有一个根模块注入器，只有通过路由的懒加载才会创建子模块注入器，因为当懒加载模块  `FeatureCModule`还没有被加载时，`AppModule`并不能通过模块树找到`FeatureCModule`，所以也就无法打平`FeatureCModule`中的`providers`，那么解决这种问题有两种做法:
+- 第一种就是现在的行为，创建一个子模块注入器。
+- 第二种就是把`FeatureCModule`中的所有`providers`动态追加到根模块注入器中。
 
-第二种做法显然会造成前后不一致的问题，那么只能选择第一种，因为选择了第一种，所以会导致惰性加载的模块注入服务和根模块注入器注入不一致的一些列行为。
+第二种做法显然会造成动态加载前后注入不一致的问题，那么只能选择第一种，因为创建了子模块注入器，再加上依赖注入的 [解析规则](docs/di/hierarchical-di#解析规则)，所以会导致惰性加载的模块注入服务和根模块注入器注入不一致的一些列行为。
 
 ## **Platform 和 Root 注入器**
 
-除了惰性加载模块提供的供应商外，所有模块的`providers`和`@Injectable({providedIn: "root"})`供应商都时在  `root`根注入器中提供，其实在`root`之上还有两个注入器，一个是额外的平台`ModuleInjector`，一个是   `NullInjector`。
+除了惰性加载模块提供的`providers`外，所有模块的`providers`和`@Injectable({providedIn: "root"})`供应商都是在 `root`根注入器中提供的，其实在`root`之上还有两个注入器，一个是额外的平台`ModuleInjector`，一个是   `NullInjector`。
 
 ![image.png](assets/images/di/hierarchical-01.png)
 
@@ -49,18 +51,18 @@ Angular 中有两个注入器层次结构：
 platformBrowserDynamic().bootstrapModule(AppModule).then(ref => {...})
 ```
 
-- `bootstrapModule()`方法会创建一个由`AppModule`配置的注入器作为平台注入器的子注入器，也就是`root`ModuleInjector`
+- `bootstrapModule()`方法会创建一个由`AppModule`配置的注入器作为平台注入器的子注入器，也就是根`ModuleInjector`。
 - `platformBrowserDynamic()`方法创建一个由`PlatformModule`配置的注入器，该注入器包含特定平台的依赖项，这允许多个应用共享同一套平台配置。例如，无论你运行多少个应用程序，浏览器都只有一个 URL 栏，你可以使用`platformBrowser()` 函数提供`extraProviders`，从而在平台级别配置特定平台的额外提供者。
 - 层次结构中的顶级父注入器是`NullInjector()`，它是树的顶部。如果你在树中向上走了很远，以至于要在`NullInjector()`中寻找服务，那么除非使用` @Optional()`，否则将收到错误消息。
 
 
-对于普通的开发者而言，我们一般接触不到平台注入器和`NullInjector`，可以假设整个应用程序只有一个 root 模块注入器。
+对于普通的开发者而言，我们一般接触不到平台注入器和`NullInjector`，可以假设整个应用程序只有一个根模块注入器（排除懒加载模块的子模块注入器）。
 
 ## **ElementInjector**
 
 除了模块注入器外，`Angular`会为每个 DOM 元素隐式创建`ElementInjector`
 
-可以用`@Component()`装饰器中的`providers`或`viewProviders`属性来配置`ElementInjector`以提供服务。
+可以用`@Component()`装饰器中的`providers`或`viewProviders`属性来配置`ElementInjector`以提供服务或者依赖值。
 
 ```ts
 @Component({
@@ -162,7 +164,7 @@ export class SkipselfComponent implements OnInit {
 
 ```
 
-上面的示例会得到 root 注入器中的 🌿，而不是组件所在的`ElementInjector`中提供的 🍁。
+上面的示例会得到根注入器中的 🌿，而不是组件所在的`ElementInjector`中提供的 🍁。
 
 如果值为 null 可以同时使用`@SkipSelf()`和`@Optional()`来防止错误。
 
@@ -192,19 +194,40 @@ export class HostComponent {
 
 由于`HostComponent`在其构造函数中具有`@Host()`，因此，无论`HostComponent`的父级是否可能有`flower.emoji`   值，该`HostComponent`都将使用 🌼（黄色花朵）。
 
-那么问题来了**@Host** 和 **@Self** 到底有什么区别？
+那么问题来了 **@Host** 和 **@Self** 到底有什么区别？
 
-<alert>`**@Host**`属性装饰器会禁止在宿主组件以上的搜索，宿主组件通常就是请求该依赖的那个组件，不过，当该组件投影进某个父组件时，那个父组件就会变成宿主，意思就是 ng-content 中的组件所在的宿主组件不是自己，而是 ng-content 提供的父组件。</alert>
+<alert>**@Host** 属性装饰器会禁止在宿主组件以上的搜索，宿主组件通常就是请求该依赖的那个组件，不过，当该组件投影进某个父组件时，那个父组件就会变成宿主，意思就是 ng-content 中的组件所在的宿主组件不是自己，而是 ng-content 提供的父组件。比如 `<host-comp><sub-comp></sub-comp></host-comp>` 中，`sub-comp`的宿主组件是`host-comp`。</alert>
 
 注：
 
-<alert>所有修饰符都可以组合使用，但是不能互斥，比如：**@Self()** 和 **@SkipSelf** ，**@Host()**  和   **@Self()**</alert>
+<alert>所有修饰符都可以组合使用，但是不能互斥，比如： **@Self()** 和 **@SkipSelf** , **@Host()** 和 **@Self()**</alert>
 
 ## 在 @Component() 中提供服务
 
 Angular 中所有的依赖都是单例的，由于存在模块和 Element 注入器层级，导致可以在不同的注入器中提供同一个令牌，从而实现非全局单例的效果，在组件中提供服务达到限制某些依赖只能在当前组件/指令以及子元素中使用，或者不同的组件注入各自的单独实例。
 
-在组件/指令中可以通过`providers`与`viewProviders`分别提供服务依赖项，可以通过阅读[guide/hierarchical-dependency-injection#providing-services-in-component](https://angular.io/guide/hierarchical-dependency-injection#providing-services-in-component) 章节深入理解，官方文档内容有点多，我尝试简化一下。
+在组件/指令中可以通过`providers`与`viewProviders`分别提供服务依赖项:
+
+```ts
+@Component({
+  ...
+  providers: [
+    {provide: FlowerService, useValue: {emoji: '🌺'}}
+  ]
+})
+```
+
+```ts
+@Component({
+  ...
+  viewProviders: [
+    {provide: AnimalService, useValue: {emoji: '🐶'}}
+  ]
+})
+```
+
+## providers 和 viewProviders
+组件或者指令中使用`providers`和`viewProviders`的区别可以通过阅读 [官方文档 hierarchical-dependency-injection#providing-services-in-component](https://angular.io/guide/hierarchical-dependency-injection#providing-services-in-component) 章节深入理解，官方内容有点多，我尝试做一点简化，其实不理解也没有任何问题，实际工作中很少需要使用`viewProviders`。
 
 首先在 Angular 中定义一个如下模板，实际的逻辑结构中会多一个 VIEW 视图的概念：
 
@@ -228,7 +251,7 @@ Angular 中所有的依赖都是单例的，由于存在模块和 Element 注入
 
 如果`<app-child></app-child>`模板内部有一个 A 组件，A 组件注入服务会先从虚拟的 #VIEW 中查找依赖，然后再到 app-child 组件，解析顺序为`app-child #VIEW => app-child => app-root #View => app-root`，那么  `providers`提供的服务其实就是挂载在组件上，`viewProviders`提供的服务挂载在 #VIEW 这个虚拟结构之上。
 
-正常情况下，`providers`和`viewProviders`没有任何区别，只要当在组件中使用投影时会不同的表现，比如下面的示例：
+正常情况下，`providers`和`viewProviders`没有任何区别，只有当在组件中使用投影时会不同的表现，比如下面的示例：
 
 ```html
 <app-root>
@@ -289,17 +312,17 @@ ng-template 在定义的视图层级上下找注入器，并不是在渲染的�
 
 ## provideIn: "any" | "root" | "platform" | NgModuleType
 
-- `root`表示在根模块注入器（root `ModuleInjector`）提供依赖
-- `platform` 表示在平台注入器提供依赖
-- 指定模块表示在特定的特性模块提供依赖（注意循环依赖）
-- `any`所有急性加载的模块都会共享同一个服务单例，惰性加载模块各自有它们自己独有的单例
+- `root`: 表示在根模块注入器（root `ModuleInjector`）提供依赖。
+- `platform`: 表示在平台注入器提供依赖。
+- 指定模块表示在特定的特性模块提供依赖（注意循环依赖）。
+- `any`: 所有急性加载的模块都会共享同一个服务单例，惰性加载模块各自有它们自己独有的单例。
 
 
 ## ElementInjector 使用场景
 
-- 服务隔离（多个详情页、编辑器）
-- 多重编辑会话
-- 在当前组件替换使用第三方服务的行为
+- 服务隔离（多个详情页、编辑器）。
+- 多重编辑会话。
+- 在当前组件替换使用第三方服务的行为。
 
+Angular 依赖注入中的`Provider`、层级注入器、`ElementInjector`和模块注入器、注入解析规则等这些知识点是密不可分的，当所有的知识点串起来后再回过头来完整按顺序阅读一下依赖注入的前四个章节，会有一种豁然开朗的感觉，因为我们看到的很多 API 和不同的行为，深层的原因还是 Angular 对于依赖注入的底层设计和原理导致的，读到此处如果前面所有的内容你都有了一个很好的理解，那么恭喜你已经进入到 Angular 依赖注入中高级水平，接下来就是把所学的知识灵活运用从而实现软件架构的升级，提高程序的健壮性和可维护性。
 
-当我们理解了 Angular 依赖注入的基本使用，依赖提供者的作用和常用的提供者类型，以及多级注入器的原理，那么可以说 Angular 依赖注入已经达到中高级水平了，那么接下来就是通过这些基础知识学习一些高级的使用技巧，知识死的，如何灵活应用才是关键，建议看到这可以喝杯茶休息一会，接下来会简单介绍一下 Angular 依赖注入的一些高级技巧。

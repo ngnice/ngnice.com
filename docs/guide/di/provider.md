@@ -37,7 +37,7 @@ export declare type StaticProvider = ValueProvider | ExistingProvider |
 ![image.png](assets/images/di/provider-02.png)
 
 
-- **provide** 属性是依赖令牌，它作为一个 key，在定义依赖值和配置注入器时使用，可以是一个**类的类型**、  **InjectionToken**、或者字符串，甚至对象，但是不能是一个 Interface、数字和布尔类型
+- **provide** 属性是依赖令牌，它作为一个 key，在定义依赖值和配置注入器时使用，可以是一个**类的类型**、  **InjectionToken**、或者字符串，甚至对象，但是不能是一个 Interface、数字和布尔类型。
 - 第二个属性是一个提供者定义对象，它告诉注入器要如何创建依赖值。 提供者定义对象中的 key 可以是   `useClass`   —— 就像这个例子中一样。 也可以是 `useExisting`、`useValue`或`useFactory`, 每一个 key 都用于提供一种不同类型的依赖。
 
 ![image.png](assets/images/di/provider-03.png)
@@ -53,15 +53,14 @@ export declare type StaticProvider = ValueProvider | ExistingProvider |
 }
 ```
 
-- `provide: Logger` 意思是把类的类型作为 **DI Token（依赖令牌）**
-- `useClass` 表示使用此类实例化作为依赖值，其实就是通过`new Logger()`返回依赖值
+- `provide: Logger` 意思是把类的类型作为 **DI Token(依赖令牌)**。
+- `useClass` 表示使用此类实例化作为依赖值，其实就是通过`new Logger()`返回依赖值。
 
 
 **使用场景：**
 
-- 所有 class 定义的服务默认都是用**类提供者**
-- 指定替代性的类提供者，替换原有服务的行为实现可扩展性，这样我在使用的时候还是注入`Logger`，但是实际返回的对象是`BetterLogger`示例
-
+- 所有 class 定义的服务默认都是用**类提供者**。
+- 指定替代性的类提供者，替换原有服务的行为实现可扩展性，这样我在使用的时候还是注入`Logger`，但是实际返回的对象是`BetterLogger`示例。
 
 ```ts
 [{ provide: Logger, useClass: BetterLogger }] 
@@ -89,15 +88,15 @@ export declare type StaticProvider = ValueProvider | ExistingProvider |
 ]
 ```
 
-- `useExisting`   值是一个   **DI Token**  ，provide 也是一个   **DI Token，**  2个 Token 指向同一个实例
-- `useClass`   值是一个可以实例化的类，也就是可以 new 出来的类，这个类可以是任何类
+- `useExisting`   值是一个   **DI Token**  ，provide 也是一个   **DI Token，**  2个 Token 指向同一个实例。
+- `useClass`   值是一个可以实例化的类，也就是可以 new 出来的类，这个类可以是任何类。
 
 
 **使用场景：**
 
-- 收窄类型，比如`Logger`类的返回的方法和属性太多，当前场景只需要使用少量的属性和函数，可以定义一个简化版的 **MinimalLogger**，通过注入`MinimalLogger`使用，运行时返回的其实还是`Logger`对象
-- 重构，替换命名，一次性无法完全修改，先临时提供一个新的别名，将来逐步替换
-- 解决循环引用问题，为类接口(抽象)指定别名
+- 收窄类型，比如`Logger`类的返回的方法和属性太多，当前场景只需要使用少量的属性和函数，可以定义一个简化版的 **MinimalLogger**，通过注入`MinimalLogger`使用，运行时返回的其实还是`Logger`对象。
+- 重构，替换命名，一次性无法完全修改，先临时提供一个新的别名，将来逐步替换。
+- 解决循环引用问题，为类接口(抽象)指定别名。
 
 
 ```ts
@@ -227,7 +226,7 @@ export const heroServiceProvider =
   };
 ```
 
-- `useFactory`字段指定该提供者是一个工厂函数，其实现代码是`heroServiceFactory`
+- `useFactory`字段指定该提供者是一个工厂函数，其实现代码是`heroServiceFactory`。
 - `deps`属性是一个提供者令牌数组，`Logger`和`UserService`类都是类提供者的令牌。该注入器解析了这些令牌，并把相应的服务注入到`heroServiceFactory`工厂函数的参数中。
 
 
