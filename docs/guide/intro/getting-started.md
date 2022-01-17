@@ -42,7 +42,7 @@ ng serve --open
 
 
 ## StackBlitz 创建和启动应用
-如果你本地没有安装`Node.js`和`npm`，想体验一下 Angular 的开发，可以直接通过 StackBlitz 在线创建一个 Angular 应用。
+如果你本地没有安装`Node.js`，想体验一下 Angular 的开发，可以直接通过 [StackBlitz](https://stackblitz.com/) 在线创建一个 Angular 应用。
 
 ![](assets/images/intro/stackblitz-new.png)
 
