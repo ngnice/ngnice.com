@@ -200,7 +200,7 @@ export class HostComponent {
 
 注：
 
-<alert>所有修饰符都可以组合使用，但是不能互斥，比如： **@Self()** 和 **@SkipSelf** , **@Host()** 和 **@Self()**</alert>
+<alert>所有修饰符都可以组合使用，但是不能互斥，比如： **@Self()** 和 **@SkipSelf()** , **@Host()** 和 **@Self()**</alert>
 
 ## 在 @Component() 中提供服务
 
