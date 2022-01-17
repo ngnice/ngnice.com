@@ -3,15 +3,20 @@ title: 快速上手
 order: 20
 ---
 
-## 安装 Angular CLI
+## 本地开发
+<alert>
+必须安装 <a href="https://nodejs.org/en/">Node.js</a> 和命令行工具。
+</alert>
 
-强烈推荐大家使用 Angular CLI 来创建项目，初始化生成应用和类库代码，首先需要使用`npm`命令安装全局 CLI。
+### 安装 Angular CLI
+
+强烈推荐大家使用 Angular CLI 来创建项目，初始化生成应用和类库代码。
 
 ```bash
 npm install -g @angular/cli
 ```
 
-## 创建应用
+### 创建应用
 
 执行 CLI 命令`ng new`创建初始化应用，并输入应用的名称`my-app`
 
@@ -22,7 +27,7 @@ ng new my-app
 
 ![](assets/images/intro/cli-ng-new.png)
 
-## 启动应用
+### 启动应用
 
 应用创建后，切换到应用目录`my-app`下，执行`ng serve`或者`npm run serve`命令启动应用。
 
@@ -36,7 +41,7 @@ ng serve --open
 ![](assets/images/intro/ng-serve-default-page.png)
 
 
-## StackBlitz 创建应用
+## StackBlitz 创建和启动应用
 如果你本地没有安装`Node.js`和`npm`，想体验一下 Angular 的开发，可以直接通过 StackBlitz 在线创建一个 Angular 应用。
 
 ![](assets/images/intro/stackblitz-new.png)
@@ -79,7 +84,7 @@ ng serve --open
 └── tsconfig.spec.json
 ```
 
-以下针对核心的文件/文件夹做了一下简单的介绍:
+以下针对核心的文件/文件夹做了一下简单的介绍，对于初学者可以先不用一一了解，只需要知道入口组件是`src/app/app.component.ts`即可，接下来会修改入口组件和模板简单体验一下 Angular。
 
 文件/文件夹|描述 
 --- | --- 
@@ -120,6 +125,7 @@ export class AppComponent  {
   message = 'Hello Angular!';
 }
 ```
+`{{message}}`使用双花括号`{{`和`}}`将组件的变量`message`动态插入到 HTML 模板中叫`文本插值`，花括号中间的部分叫插值表达式。
 
 <example-hello></example-hello>
 
@@ -177,8 +183,8 @@ export class AppModule { }
 ```
 <example-for></example-for>
 
-## 条件判断
-控制切换一个元素是否显示，通过`*ngIf`指令实现属性的判断即可。
+## 条件判断与事件绑定
+控制切换一个元素是否显示，通过`*ngIf`指令实现属性的判断即可，一般需要绑定事件控制是否显示。
 
 ```html
 // app.component.html
@@ -203,4 +209,8 @@ export class AppComponent  {
 }
 ```
 
+通过上述示例可以看出，事件绑定通过在元素上添加`(click)="findCat()"`实现，Angular 支持所有 DOM 事件的绑定，比如：`click`、`dbclick`、`select`、`mousedown`等 [HTML Dom Events](https://www.w3schools.com/jsref/dom_obj_event.asp)。
+
 <example-if></example-if>
+
+本章节主要通过简单的示例让你快速感受一下 Angular 框架的开发体验，之后会为每个知识点进行详细的介绍。
