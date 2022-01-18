@@ -25,7 +25,7 @@ export class HeroService {
 **HeroService** 通过`@Injectable()`装饰器标记为可以被注入的服务，`providedIn: 'root'`表示当前服务在 Root 注入器中提供（简单理解就是这个服务在整个应用所有地方都可以注入）并全局唯一实例。
 
 ### 第二步: 注入和使用服务
-添加服务后，我们就可以在任何组件中通过构造函数注入**HeroService，** 通过 TS 的构造函数赋值属性的特性设置为公开，这样组件内和模板中都可以使用该服务端的函数和方法。
+添加服务后，我们就可以在任何组件中通过构造函数注入 **HeroService** ， 通过 TS 的构造函数赋值属性的特性设置为公开，这样组件内和模板中都可以使用该服务的函数和方法。
 
 ```ts
 // src/app/heroes/hero-list.component
