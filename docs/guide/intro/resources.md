@@ -13,7 +13,7 @@ order: 100
 [Material Design](https://material.angular.io)| [![](https://img.shields.io/github/stars/angular/components?style=social)](https://github.com/angular/components) |Angular 官方 Material 组件库，[中文文档](https://material.angular.cn)
 [NG-ZORRO](https://ng.ant.design)| [![](https://img.shields.io/github/stars/NG-ZORRO/ng-zorro-antd?style=social)](https://github.com/NG-ZORRO/ng-zorro-antd) | Ant Design of Angular 
 [NG-ALAIN](http://ng-alain.com)| [![](https://img.shields.io/github/stars/ng-alain/ng-alain?style=social)](https://github.com/ng-alain/ng-alain) | 基于 Antd 中后台前端解决方案
-[ng-ant-admin](http://1.117.181.242:8081/ng-ant-admin)| [![](https://img.shields.io/github/stars/huajian123/ng-ant-admin?style=social)](https://github.com/huajian123/ng-ant-admin) | Angular实现的Ant Design Pro 的 Admin 模板
+[ng-ant-admin](http://1.117.181.242:8081/ng-ant-admin)| [![](https://img.shields.io/github/stars/huajian123/ng-ant-admin?style=social)](https://github.com/huajian123/ng-ant-admin) | 基于 Ant Design Pro 的 Admin 模板
 [ng-zorro-mobile](https://ng.mobile.ant.design/#/docs/introduce/zh)| [![](https://img.shields.io/github/stars/NG-ZORRO/ng-zorro-antd-mobile?style=social)](https://github.com/NG-ZORRO/ng-zorro-antd-mobile) | Ant Design 移动规范的 Angular 实现
 [ngx-bootstrap](https://valor-software.com/ngx-bootstrap)| [![](https://img.shields.io/github/stars/valor-software/ngx-bootstrap?style=social)](https://github.com/valor-software/ngx-bootstrap) | Bootstrap 组件库，Valor Software 团队打造
 [ng-bootstrap](https://ng-bootstrap.github.io)| [![](https://img.shields.io/github/stars/ng-bootstrap/ng-bootstrap?style=social)](https://github.com/ng-bootstrap/ng-bootstrap) | Bootstrap 4 的组件库（不支持 Bootstrap 3）
