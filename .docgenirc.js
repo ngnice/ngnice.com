@@ -1,5 +1,4 @@
 module.exports = {
-    baseHref: '/',
     heads: [],
     mode: 'full',
     title: 'ngnice',
