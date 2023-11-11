@@ -44,6 +44,7 @@ order: 100
 [ngx-graph](https://swimlane.github.io/ngx-graph/)| [![](https://img.shields.io/github/stars/swimlane/ngx-graph?style=social)](https://github.com/swimlane/ngx-graph) | 是一个 Angular 图形可视化库
 [ngx-gantt](https://github.com/worktile/ngx-gantt)| [![](https://img.shields.io/github/stars/worktile/ngx-gantt?style=social)](https://github.com/worktile/ngx-gantt) | A modern and powerful gantt chart component for Angular
 [slate-angular](https://github.com/worktile/slate-angular)| [![](https://img.shields.io/github/stars/worktile/slate-angular?style=social)](https://github.com/worktile/ngx-gantt) | Angular view layer for Slate
+[ngx-fluent-form](https://github.com/HyperLife1119/ngx-fluent-form)| [![](https://img.shields.io/github/stars/HyperLife1119/ngx-fluent-form?style=social)](https://github.com/HyperLife1119/ngx-fluent-form) | Building dynamic form in Angular with Fluent API or JSON.
 
 
 
@@ -65,7 +66,7 @@ order: 100
 [@tethys/store](https://github.com/tethys-org/store)| [![](https://img.shields.io/github/stars/tethys-org/store?style=social)](https://github.com/tethys-org/store) | 🚀 A mini, yet powerful state management library for Angular. from Worktile & PingCode.
 [ngrx](https://ngrx.io/)| [![](https://img.shields.io/github/stars/ngrx/platform?style=social)](https://github.com/ngrx/platform) | Reactive libraries for Angular
 [ngxs](https://www.ngxs.io/)| [![](https://img.shields.io/github/stars/ngxs/store?style=social)](https://github.com/ngxs/store) | 🚀 NGXS - State Management for Angular
-[akita](https://netbasal.gitbook.io/akita/)| [![](https://img.shields.io/github/stars/datorama/akita?style=social)](https://github.com/datorama/akita) | 🚀 State Management Tailored-Made for JS Applications
+[akita](https://opensource.salesforce.com/akita/)| [![](https://img.shields.io/github/stars/datorama/akita?style=social)](https://github.com/datorama/akita) | 🚀 State Management Tailored-Made for JS Applications
 [elf](https://github.com/ngneat/elf)| [![](https://img.shields.io/github/stars/ngneat/elf?style=social)](https://github.com/datorama/akita) | 🧙‍♀️ A Reactive Store with Magical Powers
 
 
