@@ -2,9 +2,9 @@ module.exports = {
     heads: [],
     mode: 'full',
     title: 'ngnice',
-    logoUrl: 'assets/images/logo.png',
+    logoUrl: 'assets/images/new-logo.png',
     siteProjectName: 'site',
-    theme: 'angular',
+    // theme: 'angular',
     repoUrl: 'https://github.com/ngnice/ngnice.com',
     footer: 'Open-source MIT Licensed | Copyright © 2020-present Powered by ngnice',
     navs: [
