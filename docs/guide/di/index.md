@@ -1,4 +1,4 @@
 ---
 title: 依赖注入
-order: 20
+order: 30
 ---
