@@ -20,7 +20,7 @@
             "outputPath": "dist/site",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
@@ -63,25 +63,33 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "site:build",
-            "port": 7777
+            "port": 7777,
+            "buildTarget": "site:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "site:build:production"
+              "buildTarget": "site:build:production"
+            },
+            "development": {
+              "buildTarget": "site:build:development"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "site:build"
+            "buildTarget": "site:build"
           }
         },
         "test": {
