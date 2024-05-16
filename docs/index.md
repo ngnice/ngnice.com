@@ -10,13 +10,13 @@ hero:
       btnShape: round,
       btnType: outline-primary-light
 features:
-  - icon: https://cdn.pingcode.com/open-sources/docgeni/home/feature4.png
+  - icon: ./assets/images/feature1.png
     title: 资源推荐
     description: 提供 Angular 相关的资源推荐，包括组件库，开发工具，状态管理以及优秀网站
-  - icon: https://cdn.worktile.com/open-sources/ngx-tethys/home/feature5.png
+  - icon: ./assets/images/feature2.png
     title: Angular 入门
     description: 提供 Angular 入门相关文档
-  - icon: https://cdn.pingcode.com/open-sources/docgeni/home/feature4.png
+  - icon: ./assets/images/feature3.png
     title: 最佳实践
     description: 提供 Angular 的最佳实践教程
 ---
