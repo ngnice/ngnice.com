@@ -1,7 +1,7 @@
 // docgeni
 $dg-primary: #3f51b5; // #1976d2;
 // $dg-navbar-background-angular: #3f51b5;
-@import '@docgeni/template/styles/index.scss';
+@use '@docgeni/template/styles/index.scss';
 
 .live-example {
     display: block;
